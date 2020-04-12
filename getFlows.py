@@ -14,7 +14,7 @@ SMC_USER = "admin"
 SMC_PASSWORD = "C1sco12345"
 SMC_HOST = "10.10.20.60"
 SMC_TENANT_ID = "132"
-MALICIOUS_IP = "10.10.20.20"
+MALICIOUS_IP = ""
 
 # Set the URL for SMC login
 url = "https://" + SMC_HOST + "/token/v2/authenticate"
@@ -47,12 +47,13 @@ if(response.status_code == 200):
     request_data = {
         "startDateTime": start_timestamp,
         "endDateTime": end_timestamp,
-        "subject": {
-            "ipAddresses": {
-                "includes": [MALICIOUS_IP]
-            }
-        },
-        "recordLimit": 50
+# If you want get flow about a specifical Host , pls provide MALICIOUS_IP FROM START.
+#        "subject": {
+#            "ipAddresses": {
+#                "includes": [MALICIOUS_IP]
+#            }
+#        },
+        "recordLimit": 500
     }
 
     # Perform the query to initiate the search
